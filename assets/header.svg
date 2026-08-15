@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="400" viewBox="0 0 900 400"
+     font-family="ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace">
+  <!-- SAFE-ANIMATION RULE: every element is fully visible at rest. Animation only moves,
+       glows or shifts colour on things already drawn. If a renderer strips <style> you get
+       a complete static poster, never a blank box. Learned the hard way — twice. -->
+  <style>
+    @keyframes sweep   { 0%{stop-color:#3fb950} 33%{stop-color:#58a6ff} 66%{stop-color:#bc8cff} 100%{stop-color:#3fb950} }
+    @keyframes sweep2  { 0%{stop-color:#bc8cff} 33%{stop-color:#3fb950} 66%{stop-color:#58a6ff} 100%{stop-color:#bc8cff} }
+    @keyframes pulse   { 0%,100%{r:4.5;opacity:1} 50%{r:6.5;opacity:.65} }
+    @keyframes halo    { 0%,100%{opacity:.10} 50%{opacity:.34} }
+    @keyframes dash    { to { stroke-dashoffset:-52; } }
+    @keyframes blink   { 0%,49%{opacity:1} 50%,100%{opacity:0} }
+    @keyframes drift   { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-3px)} }
+    .s1{animation:sweep 7s ease-in-out infinite}
+    .s2{animation:sweep2 7s ease-in-out infinite}
+    .node{animation:pulse 2.6s ease-in-out infinite}
+    .halo{animation:halo 2.6s ease-in-out infinite}
+    .edge{stroke-dasharray:5 8;animation:dash 1.9s linear infinite}
+    .cur{animation:blink 1.15s steps(1) infinite}
+    .float{animation:drift 5s ease-in-out infinite}
+    .n2{animation-delay:.3s}.n3{animation-delay:.6s}.n4{animation-delay:.9s}
+    .n5{animation-delay:1.2s}.n6{animation-delay:1.5s}.n7{animation-delay:1.8s}
+    @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+  </style>
+
+  <defs>
+    <linearGradient id="name" x1="0" y1="0" x2="1" y2="0">
+      <stop class="s1" offset="0%"  stop-color="#3fb950"/>
+      <stop class="s2" offset="100%" stop-color="#bc8cff"/>
+    </linearGradient>
+    <linearGradient id="rail" x1="0" y1="0" x2="1" y2="0">
+      <stop class="s1" offset="0%" stop-color="#3fb950"/>
+      <stop offset="50%" stop-color="#58a6ff"/>
+      <stop class="s2" offset="100%" stop-color="#bc8cff"/>
+    </linearGradient>
+    <radialGradient id="vig" cx="72%" cy="38%" r="62%">
+      <stop offset="0%" stop-color="#1b2530"/><stop offset="100%" stop-color="#0d1117"/>
+    </radialGradient>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="9" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="soft" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="3.5"/>
+    </filter>
+  </defs>
+
+  <rect width="900" height="400" rx="16" fill="url(#vig)"/>
+  <rect x="1" y="1" width="898" height="398" rx="16" fill="none" stroke="#222a35" stroke-width="1.5"/>
+  <rect x="0" y="0" width="900" height="4" rx="2" fill="url(#rail)"/>
+
+  <!-- ░ agent constellation ░ -->
+  <g transform="translate(575,52)">
+    <g stroke="url(#rail)" stroke-width="1.5" fill="none" opacity=".85">
+      <path class="edge" d="M140 34 L 56 118"/>
+      <path class="edge" d="M140 34 L 140 118"/>
+      <path class="edge" d="M140 34 L 224 118"/>
+      <path class="edge" d="M56 118 L 22 200"/>
+      <path class="edge" d="M56 118 L 74 200"/>
+      <path class="edge" d="M140 118 L 110 200"/>
+      <path class="edge" d="M140 118 L 146 200"/>
+      <path class="edge" d="M140 118 L 182 200"/>
+      <path class="edge" d="M224 118 L 218 200"/>
+      <path class="edge" d="M224 118 L 258 200"/>
+    </g>
+    <g>
+      <circle class="halo" cx="140" cy="34" r="15" fill="#3fb950"/>
+      <circle class="node" cx="140" cy="34" r="5.5" fill="#3fb950"/>
+      <text x="140" y="16" fill="#8b949e" font-size="10.5" text-anchor="middle">ATLAS · planner</text>
+      <circle class="halo" cx="56" cy="118" r="13" fill="#58a6ff"/>
+      <circle class="node" cx="56" cy="118" r="4.5" fill="#58a6ff"/>
+      <circle class="halo n3" cx="140" cy="118" r="13" fill="#58a6ff"/>
+      <circle class="node n3" cx="140" cy="118" r="4.5" fill="#58a6ff"/>
+      <circle class="halo n4" cx="224" cy="118" r="13" fill="#58a6ff"/>
+      <circle class="node n4" cx="224" cy="118" r="4.5" fill="#58a6ff"/>
+      <circle class="halo n2" cx="22" cy="200" r="11" fill="#bc8cff"/>
+      <circle class="node n2" cx="22" cy="200" r="4" fill="#bc8cff"/>
+      <circle class="halo n3" cx="74" cy="200" r="11" fill="#bc8cff"/>
+      <circle class="node n3" cx="74" cy="200" r="4" fill="#bc8cff"/>
+      <circle class="halo n4" cx="110" cy="200" r="11" fill="#bc8cff"/>
+      <circle class="node n4" cx="110" cy="200" r="4" fill="#bc8cff"/>
+      <circle class="halo n5" cx="146" cy="200" r="11" fill="#bc8cff"/>
+      <circle class="node n5" cx="146" cy="200" r="4" fill="#bc8cff"/>
+      <circle class="halo n6" cx="182" cy="200" r="11" fill="#bc8cff"/>
+      <circle class="node n6" cx="182" cy="200" r="4" fill="#bc8cff"/>
+      <circle class="halo n7" cx="218" cy="200" r="11" fill="#bc8cff"/>
+      <circle class="node n7" cx="218" cy="200" r="4" fill="#bc8cff"/>
+      <circle class="halo n2" cx="258" cy="200" r="11" fill="#bc8cff"/>
+      <circle class="node n2" cx="258" cy="200" r="4" fill="#bc8cff"/>
+    </g>
+    <text x="140" y="236" fill="#6e7681" font-size="10.5" text-anchor="middle">11 agents · opus → sonnet → haiku</text>
+  </g>
+
+  <!-- ░ identity ░ -->
+  <g class="float">
+    <text x="46" y="118" font-size="62" font-weight="800" letter-spacing="-1"
+          fill="url(#name)" filter="url(#glow)">KRISH</text>
+    <text x="46" y="182" font-size="62" font-weight="800" letter-spacing="-1"
+          fill="url(#name)" filter="url(#glow)">MEHTA</text>
+  </g>
+  <rect x="48" y="200" width="86" height="3" rx="1.5" fill="url(#rail)"/>
+  <text x="46" y="228" font-size="14.5" fill="#c9d1d9">implementation engineer <tspan fill="#6e7681">@</tspan> harness</text>
+  <text x="46" y="250" font-size="13" fill="#6e7681">i put AI agents inside enterprise systems that did not ask for them</text>
+
+  <g font-size="11.5">
+    <rect x="46"  y="268" width="96"  height="23" rx="11.5" fill="#0d1117" stroke="#2c3542"/>
+    <text x="94"  y="283" fill="#3fb950" text-anchor="middle">● 2M+ daily ops</text>
+    <rect x="150" y="268" width="112" height="23" rx="11.5" fill="#0d1117" stroke="#2c3542"/>
+    <text x="206" y="283" fill="#58a6ff" text-anchor="middle">20k devs served</text>
+    <rect x="270" y="268" width="96"  height="23" rx="11.5" fill="#0d1117" stroke="#2c3542"/>
+    <text x="318" y="283" fill="#bc8cff" text-anchor="middle">837 tests green</text>
+  </g>
+
+  <!-- ░ terminal strip ░ -->
+  <g>
+    <rect x="46" y="312" width="808" height="52" rx="10" fill="#12171f" stroke="#222a35"/>
+    <circle cx="66" cy="338" r="3.5" fill="#ff5f57"/>
+    <circle cx="79" cy="338" r="3.5" fill="#febc2e"/>
+    <circle cx="92" cy="338" r="3.5" fill="#28c840"/>
+    <text x="112" y="343" font-size="13.5" fill="#3fb950">$<tspan fill="#c9d1d9" dx="8">ssh</tspan><tspan fill="#58a6ff" dx="7">krish@tripos.dev</tspan><tspan fill="#6e7681" dx="10"># live · 126 routes · 11 agents running</tspan></text>
+    <rect class="cur" x="700" y="330" width="8" height="15" fill="#3fb950"/>
+  </g>
+</svg>
